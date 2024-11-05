@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Priya's To-Do List</h1>
-    <form action="/add" method="POST">
-        <input type="text" name="content" placeholder="New task" required>
-        <button type="submit">Add Task</button>
-    </form>
-    <ul>
-        {% for task in tasks %}
-            <li>
-                {% if task.done %}
-                    <s>{{ task.content }}</s>
-                {% else %}
-                    {{ task.content }}
-                {% endif %}
-                <a href="/complete/{{ loop.index0 }}">Complete</a>
-                <a href="/delete/{{ loop.index0 }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
-</head>
-<body>
-    
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="content" placeholder="New task" required>
+            <button type="submit">Add</button>
+        </form>
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <span class="task-content {% if task.done %}completed{% endif %}">
+                        {{ task.content }}
+                    </span>
+                    <div class="action-buttons">
+                        {% if not task.done %}
+                            <a href="/complete/{{ loop.index0 }}">Complete</a>
+                        {% endif %}
+                        <a href="/delete/{{ loop.index0 }}">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
