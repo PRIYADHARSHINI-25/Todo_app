@@ -4,10 +4,8 @@ os: linux
 files:
   - source: /templates/index.html
     destination: /var/www/html/
-files:
   - source: /static/style.css
     destination: /var/www/html/static
-files:
   - source: /app.py
     destination: /var/www/html/
 hooks:
