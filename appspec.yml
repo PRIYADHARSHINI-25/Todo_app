@@ -3,11 +3,11 @@ os: linux
 
 files:
   - source: /templates/index.html
-    destination: /var/www/html/templates
+    destination: /var/www/html/todo/templates
   - source: /static/style.css
-    destination: /var/www/html/static
+    destination: /var/www/html/todo/static
   - source: /app.py
-    destination: /var/www/html/
+    destination: /var/www/html/todo
 hooks:
   BeforeInstall:
     - location: scripts/httpd_install.sh
