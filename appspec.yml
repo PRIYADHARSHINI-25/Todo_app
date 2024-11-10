@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /templates/index.html
-    destination: /var/www/html/
+    destination: /var/www/html/templates
   - source: /static/style.css
     destination: /var/www/html/static
   - source: /app.py
